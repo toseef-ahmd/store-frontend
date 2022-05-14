@@ -1,0 +1,63 @@
+<form class="needs-validation form-signup" novalidate>
+    <div class="row g-3">
+        <div class="col-sm-6">
+            <label for="firstName" class="form-label">First name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" [(ngModel)]="firstname" (ngModelChange)="checkFNameLetters($event)">
+            <div *ngIf="firstnameErr" class="text-danger">
+                First name is required.
+            </div>
+            <div *ngIf="invalidFirstname" class="text-danger">
+                First name can only have letters
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <label for="lastName" class="form-label">Last name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" [(ngModel)]="lastname" (ngModelChange)="checkLNameLetters($event)">
+            <div *ngIf="lastnameErr" class="text-danger">
+                Last name is required.
+            </div>
+            <div *ngIf="invalidLastname" class="text-danger">
+                Last name can only have letters
+            </div>
+        </div>
+
+        <div class="col-12">
+            <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username" [(ngModel)]="username" required>
+            <div *ngIf="usernameErr" class="text-danger">
+                Username is required
+            </div>
+            <div *ngIf="nameMinLengthErr" class="text-danger">
+                Username should be atleast 5 characters long
+            </div>
+        </div>
+
+        <div class="col-12">
+            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="" [(ngModel)]="password" required>
+            <div *ngIf="passwordErr" class="text-danger">
+                Password is required
+            </div>
+            <div *ngIf="passMinLengthErr" class="text-danger">
+                Password should be atleast 5 characters long
+            </div>
+        </div>
+
+        <div class="col-12">
+            <label for="cpassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+            <input type="password" class="form-control" name="cpassword" (ngModelChange)="passwordsMatch($event)" placeholder="" [(ngModel)]="cpassword" required>
+            <div *ngIf="cpasswordErr" class="text-danger">
+                Confirm Password and Password do not match.
+            </div>
+        </div>
+    </div>
+    <div class="my-4"></div>
+    <div class="row g-3">
+        <button class="btn btn-primary" (click)="handleSubmit()">Submit</button>
+    </div>
+    <div class="my-4"></div>
+    <div>
+        <p>Already have an account? <a routerLink="/login" class="link-primary">Login</a></p>
+    </div>
+</form>

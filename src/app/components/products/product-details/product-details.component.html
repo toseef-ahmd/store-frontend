@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="product-image">
+            <img src="{{product.avatar}}" class="card-img-top" alt="sample image">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="product-pricing">
+            <h2>{{product.name}}</h2>
+        </div>
+        <div>
+            <h5>Price : {{product.price | currency : '$'}}</h5>
+        </div>
+        <div class="product-description">
+            <p>{{product.details}}</p>
+        </div>
+        <select class="form-select form-select-sm mb-1 ms-3" name="quantity" (change)="setQuantity($event)" style="width: 100px;">
+            <option *ngFor="let item of [].constructor(product.quantity); let i = index" value="{{i+1}}">{{i+1}}</option>
+        </select>
+        <div>
+            <button class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
+        </div>
+    </div>
+</div >

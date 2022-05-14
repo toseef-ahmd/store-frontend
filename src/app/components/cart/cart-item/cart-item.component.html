@@ -1,0 +1,11 @@
+<div class="cart-item-container">
+    <img src="{{ cartItem.product.avatar }}" style="width:60px; height: auto;">
+    <span class="product-name w-auto">{{ cartItem.product.name }}</span> <span class="product-price  ms-5">{{ cartItem.product.price | currency: "$" }} x {{cartItem.quantity}}</span>
+
+    <div class="input-group w-auto justify-content-end align-items-center">
+        <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-xs mx-1 " data-field="quantity" (click)="minusQuantity()">
+        <input type="text" step="1" max="10" value={{cartItem.quantity}} name="quantity" class="quantity-field border-0 text-center">
+        <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-xs " data-field="quantity" (click)="addQuantity()">
+    </div>
+     <button class="btn btn-danger delete" (click)="removeFromCart()"><fa-icon [icon]="faCross"></fa-icon> </button>
+</div>

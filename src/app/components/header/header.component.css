@@ -1,0 +1,24 @@
+.navbar {
+  padding: 10px;
+  display:flex;
+  justify-content:space-between;
+  background:red;
+}
+.right-nav {
+  margin-right:0;
+  float: inline-end;
+}
+.cart-link {
+  display: inline-flex;
+}
+.badge {
+  font-size: 10px;
+  display: inline-flex;
+  margin-left: -5%;
+  background-color: blueviolet;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  height: 2%;
+  top: 50%;
+}

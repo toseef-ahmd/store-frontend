@@ -1,0 +1,33 @@
+
+<form class="needs-validation form-login">
+    <div class="row g-3">
+        <h3>Login</h3>
+        <div *ngIf="loginError" class="alert alert-danger" role="alert">
+            {{errorMsg}}
+        </div>
+        <div class="col-12">
+            <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" name="username" id="username" placeholder="Username" [(ngModel)]="username" required>
+            <div *ngIf="usernameError" class="text-danger">
+            Username is required
+            </div>
+        </div>
+
+        <div class="col-12 flex-wrap">
+            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Your Password" [(ngModel)]="password" required>
+            <div *ngIf="passwordError" class="text-danger">
+                <span class="error invalid-feedback" aria-hidden="true"></span>Password is required
+            </div>
+        </div>
+    </div>
+    
+    <div class="my-4"></div>
+    <div class="row g-3">
+        <button class="btn btn-primary" (click)="handleLogin()">Login</button>
+    </div>
+    <div class="my-4"></div>
+    <div>
+        <p>Don't have an account? <a routerLink="/register" class="link-primary">Signup</a></p>
+    </div>
+</form>

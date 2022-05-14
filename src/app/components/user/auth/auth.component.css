@@ -1,0 +1,12 @@
+.form-login {
+    width: 100%;
+    max-width: 430px;
+    padding: 15px;
+    margin: auto;
+  }
+
+  .fa-eraser {
+    width: 15px;
+    margin: -25px 10px;
+    float: right;
+  }

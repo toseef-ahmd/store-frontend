@@ -1,0 +1,30 @@
+<nav ngbNav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">Angular</a>
+  <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarsDefault">
+    <ul class="navbar-nav container justify-content-between">
+      <li ngbNavItem class="ms-auto">
+        <a ngbNavLink routerLink="cart" class="cart-link">
+          <fa-icon [icon]="faCartShopping"></fa-icon>
+          <span class="badge">{{cartItemsCount}}</span>
+        </a>
+      </li>
+      <li ngbNavItem *ngIf="!loggedIn">
+        <a ngbNavLink routerLink="login" class="cart-link">
+          <fa-icon [icon]="faUser"></fa-icon>
+          <span class="pt-0 ms-1">Login</span>
+        </a>
+      </li>
+
+      <li ngbNavItem *ngIf="loggedIn">
+        <a ngbNavLink role="button" (click)="handleLogout()">
+          <fa-icon [icon]="faSignOut"></fa-icon>
+        </a>
+      </li>
+
+      
+    </ul>
+  </div>
+</nav>

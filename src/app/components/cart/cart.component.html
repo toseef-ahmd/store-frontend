@@ -1,0 +1,26 @@
+<div class="flex-row-fluid ml-lg-8">
+    <div class="card card-custom">
+       <div class="row">
+        <div class="col col-md-6 col-sm-12">
+            <app-checkout-form></app-checkout-form>
+        </div>
+        <div class="col col-md-6 col-sm-12">
+            <h4 class="mb-3">Your Cart</h4>
+            <div class="card-body">
+                <div *ngIf="cartItems && cartItems.length == 0; else cartData">
+                    Cart is Empty
+                </div>
+                <ng-template #cartData>
+                    <div *ngFor="let item of cartItems">
+                        <app-cart-item [cartItem]="item" (removeItemFromCart)="removeCartItem($event)" (increaseQuantity)="increaseQuantity($event)" (decreaseQuantity)="decreaseQuantity($event)" ></app-cart-item>
+                    </div> 
+                    <div class="cart-total">
+                        <span class="total-heading">Total: </span>
+                        <span class="total-value">{{total | currency: "$"}}</span>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+       </div>
+    </div>
+</div>
