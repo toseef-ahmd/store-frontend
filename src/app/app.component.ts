@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -8,14 +8,17 @@ import { Location } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'store-frontend';
   disableHeader : boolean = false
 
-  constructor(private router: Router, private location: Location){
+  constructor(private router: Router, private location: Location, private cd : ChangeDetectorRef){
       const path : string = this.location.path();
     }
   
+    ngAfterViewInit(): void {
+      this.cd.detectChanges();
+    }
   ChangeDisableHeader(flag : boolean) : void {
     this.disableHeader = flag;
   }
