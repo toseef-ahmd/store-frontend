@@ -12,7 +12,7 @@
         </a>
       </li>
       <li ngbNavItem *ngIf="!loggedIn">
-        <a ngbNavLink routerLink="login" class="cart-link">
+        <a ngbNavLink type="button" (click)="handleLogin()"lass="cart-link">
           <fa-icon [icon]="faUser"></fa-icon>
           <span class="pt-0 ms-1">Login</span>
         </a>
