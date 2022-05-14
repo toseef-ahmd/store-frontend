@@ -28,7 +28,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     const token = this.authService.getToken();
-    //this.appComp.ChangeDisableHeader(true);
+    this.appComp.ChangeDisableHeader(true)
     // if(token.length>0) {
     //   this.router.navigate(['products'])
     // }

@@ -50,10 +50,20 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-  async handleLogout() : Promise<void> {
-    await this.authService.logout();
-    this.appComp.ChangeDisableHeader(true);
+  async handleLogin() : Promise<void> {
+    await this.appComp.ChangeDisableHeader(true);
 
+    this.disableHeader()
+  }
+
+  async disableHeader() : Promise<void> {
+
+    this.router.navigate(['/login'])
+  }
+  async handleLogout() : Promise<void> {
+    this.appComp.ChangeDisableHeader(true);
+    await this.authService.logout();
+    
     this.router.navigate(['/login'])
   }
 }
