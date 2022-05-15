@@ -16,11 +16,11 @@ export class AppComponent implements AfterViewInit {
       const path : string = this.location.path();
     }
   
-    ngAfterViewInit(): void {
-      this.cd.detectChanges();
-    }
+  ngAfterViewInit(): void {
+    this.cd.detectChanges();
+  }
+
   ChangeDisableHeader(flag : boolean) : void {
     this.disableHeader = flag;
-  }
-  
+  } 
 }

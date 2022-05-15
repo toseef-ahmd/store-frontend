@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { share } from 'rxjs';
 import { Product } from 'src/app/models/products.model';
 import { ProductsService } from 'src/app/services/products/products.service';
 
@@ -7,17 +8,27 @@ import { ProductsService } from 'src/app/services/products/products.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, AfterViewInit {
 
    products : Product[] = []
   //constructor() { }
-  constructor(private productsService : ProductsService ) {}
+  constructor(private productsService : ProductsService, private cd : ChangeDetectorRef ) {}
 
-  async ngOnInit() {
-    await this.productsService.fetchProducts().subscribe(res => {
-      console.log(res)
+  ngAfterViewInit(): void {
+    
+    this.cd.detectChanges()
+  }
+  ngOnInit() {
+    this.productsService.fetchProducts().subscribe(res => {
       this.products = res;
     });
   }
+
+  // addProducts(product : Product) : void {
+  //   const $res = this.productsService.addProducts(product).pipe(share());
+  //   $res.subscribe(res => {
+  //     console.log(res)
+  //   })
+  // }
 
 }

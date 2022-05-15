@@ -27,7 +27,7 @@ export class CartService {
 
   constructor(private http : HttpClient, private authService : AuthService) {
     this.token = authService.getToken()
-    //this.userID = authService.getAuthenticatedUserID()
+    this.userID = authService.getAuthenticatedUserID()
    }
 
   add(product: Product, quantity: number) {

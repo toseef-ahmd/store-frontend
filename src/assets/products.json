@@ -1,0 +1,75 @@
+[
+    {
+        "id" : 1,
+        "name": "Harry Potter",
+        "price": 10,
+        "quantity" : 10,
+        "details" : "This is a harry potter book.",
+        "avatar" : "https://res.cloudinary.com/atkora/image/upload/v1650995531/29056083._SY475__qwmwfw.jpg",
+        "rating" : 5
+    },
+    {
+        "id" : 2,
+        "name": "Galaxy S22 Ultra",
+        "price": 1050,
+        "quantity" : 5,
+        "details" : "This is a Samsung Galaxy S22 Ultra.",
+        "avatar" : "https://res.cloudinary.com/atkora/image/upload/v1650995529/download_p0lrj7.jpg",
+        "rating" : 5
+    },
+    {
+        "id" : 3,
+        "name": "Iphone 13 Pro Max",
+        "price": 1000,
+        "quantity" : 6,
+        "details" : "This is an Apple Iphone 13 Pro max",
+        "avatar" : "https://res.cloudinary.com/atkora/image/upload/v1650995530/iPhone-12-Pro-Max-512GB-Silver-0194252024263-04112020-01-p_l2y30b.jpg",
+        "rating" : 5
+    },
+    {
+        "id" : 4,
+        "name": "Macbook Pro",
+        "price": 3000,
+        "quantity" : 3,
+        "details" : "This is an Apple Macbook Pro",
+        "avatar" : "https://res.cloudinary.com/atkora/image/upload/v1652556883/apple-macbook-pro-touch-bar-16-i9-2.3-16gb-1tb-ssd-laptop_wgxvuu.jpg",
+        "rating" : 5
+    },
+    {
+        "id" : 5,
+        "name": "Air Pods",
+        "price": 400,
+        "quantity" : 3,
+        "details" : "This is a pair of Airpod pro",
+        "avatar" : "https://res.cloudinary.com/atkora/image/upload/v1652556895/MME73_la7rr5.jpg",
+        "rating" : 5
+    },
+    {
+        "id" : 6,
+        "name": "Air Pods",
+        "price": 300,
+        "quantity" : 15,
+        "details" : "This is a Sony Headphone",
+        "avatar" : "https://res.cloudinary.com/atkora/image/upload/v1652557136/2ab749ab3983bdeb6b2187653f12f792_ozannu.webp",
+        "rating" : 5
+    },
+    {
+        "id" : 7,
+        "name": "Canon Camera",
+        "price": 800,
+        "quantity" : 10,
+        "details" : "This is a Canon DSLR Camera",
+        "avatar" : "https://res.cloudinary.com/atkora/image/upload/v1652556863/1566949680_1502490_pdyoeq.webp",
+        "rating" : 5
+    },
+    {
+        "id" : 8,
+        "name": "Bike Helmet",
+        "price": 500,
+        "quantity" : 10,
+        "details" : "This is a Motorcycle Helmet",
+        "avatar" : "https://res.cloudinary.com/atkora/image/upload/v1650995530/download_1_o14gzv.jpg",
+        "rating" : 5
+    }
+
+]
