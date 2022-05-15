@@ -1,8 +1,7 @@
-import { Product } from "./products.model";
+import { Product } from './products.model'
 
 export interface CartItem {
-    readonly id? : number,
-    product : Product,
-    quantity : number
-
+  readonly id?: number
+  product: Product
+  quantity: number
 }

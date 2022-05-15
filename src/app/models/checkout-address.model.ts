@@ -1,6 +1,6 @@
 export interface Address {
-    email : string,
-    address : string,
-    state : string,
-    zip : number
+  email: string
+  address: string
+  state: string
+  zip: number
 }

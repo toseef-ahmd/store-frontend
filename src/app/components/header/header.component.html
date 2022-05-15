@@ -20,7 +20,7 @@
 
       <li ngbNavItem *ngIf="loggedIn">
         <a ngbNavLink role="button" (click)="handleLogout()">
-          <fa-icon [icon]="faSignOut"></fa-icon>
+          <fa-icon [icon]="faSignOutAlt" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout"></fa-icon>
         </a>
       </li>
 
