@@ -22,10 +22,15 @@ export class ProductsService {
     rating: 0,
   })
   constructor(private http: HttpClient) {
-    // this.products.next(Products)
+   
   }
 
-  fetchProducts(): Observable<Product[]> {
+  fetchProducts(): Product[] {
+   
+    return this.products;
+  }
+
+  fetchLocalProducts(): Observable<Product[]> {
     const $data = this.http.get<unknown>('assets/products.json')
     
     $data.subscribe((res) => {
@@ -35,7 +40,6 @@ export class ProductsService {
 
     return $data as Observable<Product[]>
   }
-
   getProductByID(id: number): Observable<Product> {
     if(this.products.length==0)
     {
@@ -45,9 +49,10 @@ export class ProductsService {
     return this.product
   }
 
-  addProducts(products: Product[]) {
-    const body: Object = { products: products }
-
+  addProducts(product : Product[]) : Observable<Product>  {
+    const body: Object = { product: product }
+    console.log("body: ")
+    console.log(body)
     const token: string = localStorage.getItem('token') as string
 
     const headers = new HttpHeaders({
@@ -55,7 +60,7 @@ export class ProductsService {
       Authorization: `Bearer ${token}`,
     })
 
-    return this.http.post<[]>(this.m_baseURL + '/products/', body, {
+    return this.http.post<Product>(this.m_baseURL + '/products/', body, {
       headers: headers,
     })
   }

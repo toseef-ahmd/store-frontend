@@ -16,7 +16,7 @@ export class CheckoutSuccessComponent implements OnInit {
   constructor(
     private router: Router,
     private cartService: CartService,
-    private authService: AuthService
+    private authService: AuthService,
   ) {}
   async ngOnInit(): Promise<void> {
     await this.createOrder()
@@ -40,14 +40,19 @@ export class CheckoutSuccessComponent implements OnInit {
     const $order: Observable<Order> = this.cartService
       .createOrder()
       .pipe(share())
+
     $order.subscribe((res) => {
+
       this.addItemsInOrder(res.id as number)
     })
   }
 
   addItemsInOrder(orderID: number): void {
-    this.cartService.getCartItems().subscribe((res) => {
+    const $result = this.cartService.getCartItems().pipe(share());
+    console.log("Cart Items:")
+    $result.subscribe((res) => {
       res.map((item) => {
+        
         const $orderItem: Observable<OrderItems> = this.cartService
           .addItemsToOrder(orderID, item)
           .pipe(share())
