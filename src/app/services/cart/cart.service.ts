@@ -38,6 +38,7 @@ export class CartService {
     const localItems: CartItem[] = JSON.parse(
       localStorage.getItem('cartItems') as string
     )
+   
     if (localItems) {
       this.cartItems = localItems
     }
@@ -102,8 +103,10 @@ export class CartService {
   }
 
   emptyCart(): void {
-    const items: CartItem[] = []
-    this.addedItems.next(items)
+    localStorage.removeItem('cartItems')
+  
+    this.cartItems = []
+    this.addedItems.next(this.cartItems)
   }
 
   getOrder(): Order {
@@ -192,7 +195,6 @@ export class CartService {
       quantity: cartItem.quantity 
     }
 
-    console.log(body)
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.token}`,

@@ -4,6 +4,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core'
+import { share } from 'rxjs'
 import { Product } from 'src/app/models/products.model'
 import { ProductsService } from 'src/app/services/products/products.service'
 
@@ -14,25 +15,33 @@ import { ProductsService } from 'src/app/services/products/products.service'
 })
 export class ProductListComponent implements OnInit, AfterViewInit {
   products: Product[] = []
+  localProducts : Product[] = []
+  
   //constructor() { }
   constructor(
     private productsService: ProductsService,
     private cd: ChangeDetectorRef
-  ) {}
+  ) {
+    
+  }
 
   ngAfterViewInit(): void {
-    this.cd.detectChanges()
-  }
-  ngOnInit() {
-    this.productsService.fetchProducts().subscribe((res) => {
-      this.products = res
-    })
-  }
+      this.cd.detectChanges()
+      //this.ngOnInit();
+    }
 
-  // addProducts(product : Product) : void {
-  //   const $res = this.productsService.addProducts(product).pipe(share());
-  //   $res.subscribe(res => {
-  //     console.log(res)
-  //   })
-  // }
+  ngOnInit() : void {
+    this.products= this.productsService.fetchProducts();
+      if(this.products.length==0) {
+        const $local = this.productsService.fetchLocalProducts().pipe(share());
+
+      $local.subscribe((res) => {
+        this.productsService.addProducts(res).subscribe(data=> {
+          console.log(data)
+        })
+        this.products = res;
+      })
+    }
+  }
+    
 }
