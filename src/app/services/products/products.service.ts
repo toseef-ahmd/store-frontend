@@ -25,9 +25,9 @@ export class ProductsService {
    
   }
 
-  fetchProducts(): Product[] {
+  fetchProducts(): Observable<Product[]> {
    
-    return this.products;
+    return this.http.get<Product[]>(this.m_baseURL + '/products')
   }
 
   fetchLocalProducts(): Observable<Product[]> {
@@ -49,10 +49,8 @@ export class ProductsService {
     return this.product
   }
 
-  addProducts(product : Product[]) : Observable<Product>  {
-    const body: Object = { product: product }
-    console.log("body: ")
-    console.log(body)
+  addProducts() : Observable<Product>  {
+  
     const token: string = localStorage.getItem('token') as string
 
     const headers = new HttpHeaders({
@@ -60,8 +58,6 @@ export class ProductsService {
       Authorization: `Bearer ${token}`,
     })
 
-    return this.http.post<Product>(this.m_baseURL + '/products/', body, {
-      headers: headers,
-    })
+    return this.http.post<Product>(this.m_baseURL + '/products/load', {headers : headers})
   }
 }

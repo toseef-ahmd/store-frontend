@@ -5,25 +5,42 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarsDefault">
     <ul class="navbar-nav container justify-content-between">
+      <li *ngIf="!productsAvailable" ngbNavItem class="ms-auto">
+        <a ngbNavLink role="button" (click)="dumpProducts()" class="cart-link">
+          <fa-icon [icon]="faAdd"></fa-icon>
+          <span class="ms-1">Dump Products</span>
+        </a>
+      </li>
       <li ngbNavItem class="ms-auto">
         <a ngbNavLink routerLink="cart" class="cart-link">
           <fa-icon [icon]="faCartShopping"></fa-icon>
           <span class="badge">{{cartItemsCount}}</span>
         </a>
       </li>
+      
       <li ngbNavItem *ngIf="!loggedIn">
         <a ngbNavLink type="button" (click)="handleLogin()"lass="cart-link">
           <fa-icon [icon]="faUser"></fa-icon>
           <span class="pt-0 ms-1">Login</span>
         </a>
       </li>
-
       <li ngbNavItem *ngIf="loggedIn">
-        <a ngbNavLink role="button" (click)="handleLogout()">
-          <fa-icon [icon]="faSignOutAlt" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout"></fa-icon>
-        </a>
+        <div class="dropdown  ms-2" style="margin-top: 5px;">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="30" height="30" class="rounded-circle" >
+          </a>
+        
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-left: -15px;">
+            <li><a class="dropdown-item" href="#"><fa-icon [icon]="faUser" class="ms-2"></fa-icon> Profile</a></li>
+            <li><a class="dropdown-item" routerLink="orders"><fa-icon [icon]="faShoppingBasket" class="ms-2"></fa-icon>Orders</a></li>
+            <li>
+              <a class="dropdown-item" role="button" (click)="handleLogout()">
+                <fa-icon [icon]="faSignOutAlt" class="ms-2"></fa-icon> Logout
+              </a>
+            </li>
+          </ul>
+        </div>
       </li>
-
       
     </ul>
   </div>

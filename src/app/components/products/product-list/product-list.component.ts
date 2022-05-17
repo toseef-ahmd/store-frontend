@@ -13,7 +13,7 @@ import { ProductsService } from 'src/app/services/products/products.service'
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
 })
-export class ProductListComponent implements OnInit, AfterViewInit {
+export class ProductListComponent implements OnInit {
   products: Product[] = []
   localProducts : Product[] = []
   
@@ -25,23 +25,12 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     
   }
 
-  ngAfterViewInit(): void {
-      this.cd.detectChanges()
-      //this.ngOnInit();
-    }
 
   ngOnInit() : void {
-    this.products= this.productsService.fetchProducts();
-      if(this.products.length==0) {
-        const $local = this.productsService.fetchLocalProducts().pipe(share());
-
-      $local.subscribe((res) => {
-        this.productsService.addProducts(res).subscribe(data=> {
-          console.log(data)
-        })
-        this.products = res;
-      })
-    }
+    this.productsService.fetchProducts().subscribe(res=> {
+      this.products = res;
+    });
+    
   }
     
 }
