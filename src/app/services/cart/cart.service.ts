@@ -188,7 +188,6 @@ export class CartService {
   }
 
   addItemsToOrder(orderID: number, cartItem: CartItem): Observable<OrderItems> {
-
     const body: Object = { 
       order_id: orderID,
       product_id: cartItem.product.id as number,
