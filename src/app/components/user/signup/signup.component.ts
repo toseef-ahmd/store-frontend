@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
@@ -37,7 +38,7 @@ export class SignupComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.app.ChangeDisableHeader(true)
+    
   }
 
   signup(): void {
@@ -53,7 +54,7 @@ export class SignupComponent implements OnInit {
       Swal.fire('', 'Successfully Signed Up', 'success')
 
       localStorage.setItem('token', JSON.stringify(this.token.token))
-      this.app.ChangeDisableHeader(false)
+      
       this.router.navigate(['/products'])
     })
   }

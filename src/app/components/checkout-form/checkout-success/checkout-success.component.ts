@@ -42,7 +42,6 @@ export class CheckoutSuccessComponent implements OnInit {
       .pipe(share())
 
     $order.subscribe((res) => {
-
       this.addItemsInOrder(res.id as number)
     })
   }

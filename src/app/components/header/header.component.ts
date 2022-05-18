@@ -40,7 +40,11 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private appComp: AppComponent,
     private productService : ProductsService
-  ) {}
+  ) {
+    this.authService.GetloggedInStatus().subscribe(res=> {
+      this.loggedIn = res;
+    })
+  }
 
   ngOnInit(): void {
     this.cartService.getCartItems().subscribe((items) => {
@@ -48,11 +52,7 @@ export class HeaderComponent implements OnInit {
         this.cartItemsCount = items.length
       }
     })
-
-    this.token = localStorage.getItem('token') as string
     
-    this.loggedIn = this.token?.length > 0
-
     this.productService.fetchProducts().subscribe(res=> {
       if(res) {
         this.productsAvailable = true;
@@ -60,18 +60,24 @@ export class HeaderComponent implements OnInit {
       else {
         this.productsAvailable = false;
       }
-      
     })
+
+    const token : string = localStorage.getItem('token') as string
+    console.log("token obtained")
+    if(token) {
+      this.loggedIn = true
+      console.log(this.loggedIn)
+    }
   }
 
   getUser(id: number): void {
     this.authService.getUser(id).subscribe((res) => {
       this.user = res
+
     })
   }
 
   async handleLogin(): Promise<void> {
-    await this.appComp.ChangeDisableHeader(true)
 
     this.disableHeader()
   }
@@ -81,9 +87,9 @@ export class HeaderComponent implements OnInit {
   }
   
   async handleLogout(): Promise<void> {
-    this.appComp.ChangeDisableHeader(true)
+    
     await this.authService.logout()
-
+    this.authService.ChangeLoggedInStatus(false);
     this.router.navigate(['/login'])
   }
 

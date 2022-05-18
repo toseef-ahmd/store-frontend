@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { CartComponent } from './components/cart/cart.component'
 import { CheckoutFormComponent } from './components/checkout-form/checkout-form.component'
 import { CheckoutSuccessComponent } from './components/checkout-form/checkout-success/checkout-success.component'
+import { OrdersListComponent } from './components/orders/orders-list/orders-list.component'
 import { ProductDetailsComponent } from './components/products/product-details/product-details.component'
 import { ProductListComponent } from './components/products/product-list/product-list.component'
 import { AuthComponent } from './components/user/auth/auth.component'
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'checkout-success', component: CheckoutSuccessComponent },
   { path: 'register', component: SignupComponent },
   { path: 'login', component: AuthComponent },
+  {path : 'orders', component : OrdersListComponent}
 ]
 
 @NgModule({

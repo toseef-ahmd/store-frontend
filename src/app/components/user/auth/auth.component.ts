@@ -31,10 +31,12 @@ export class AuthComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.appComp.ChangeDisableHeader(true)
-    // if(token.length>0) {
-    //   this.router.navigate(['products'])
-    // }
+    
+    this.authService.GetloggedInStatus().subscribe(res=> {
+      if(res== true) {
+        this.router.navigate([''])
+      }
+    })
   }
 
   login(username: string, password: string): void {
@@ -42,7 +44,6 @@ export class AuthComponent implements OnInit {
       next: (res) => {
         if(res) {
           this.handleSuccess(res as Token)
-          this.appComp.ChangeDisableHeader(false)
         }
       },
       error: (e) => {
@@ -72,7 +73,7 @@ export class AuthComponent implements OnInit {
     this.token = res as Token
     this.loginError = false
     localStorage.setItem('token', this.token.token)
-    
+    this.authService.ChangeLoggedInStatus(true);
     if (window.history.length > 1) {
       this.location.back()
     } else {

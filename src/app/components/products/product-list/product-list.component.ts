@@ -1,10 +1,8 @@
 import {
-  AfterViewInit,
   ChangeDetectorRef,
   Component,
   OnInit,
 } from '@angular/core'
-import { share } from 'rxjs'
 import { Product } from 'src/app/models/products.model'
 import { ProductsService } from 'src/app/services/products/products.service'
 

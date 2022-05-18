@@ -1,0 +1,33 @@
+<div class="container">
+  <div *ngIf="orders && orders.length == 0; else orderTable" style="margin-top: 15%;">
+    <div class="alert alert-danger" role="alert" >
+      No Orders placed yet.
+  </div>
+  </div>
+  <ng-template #orderTable>
+    <table class="table" #orderTable>
+      <thead>
+        <tr>
+          
+          <th scope="col"></th>
+          <th scope="col">Name</th>
+          <th scope="col">Qty</th>
+          <th scope="col">Price</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let order of orders">
+             
+              <td scope="col">
+                  <img src="{{order.avatar}}" height="50px" width="50px" alt="">
+              </td>
+              <td scope="col">{{order.name}}</td>
+              <td scope="col">{{order.quantity}}</td>
+              <td scope="col">{{order.price | currency :'$'}}</td>
+              <td scope="col">{{order.status}}</td>
+          </tr>
+      </tbody>
+    </table>
+  </ng-template>
+</div>

@@ -9,8 +9,7 @@ import { Location } from '@angular/common'
 })
 export class AppComponent implements AfterViewInit {
   title = 'store-frontend'
-  disableHeader = false
-
+  
   constructor(
     private router: Router,
     private location: Location,
@@ -19,9 +18,5 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.cd.detectChanges()
-  }
-
-  ChangeDisableHeader(flag: boolean): void {
-    this.disableHeader = flag
   }
 }

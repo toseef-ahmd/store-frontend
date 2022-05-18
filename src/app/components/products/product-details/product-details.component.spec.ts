@@ -1,4 +1,8 @@
+
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing'
+
+import { CartService } from 'src/app/services/cart/cart.service'
 
 import { ProductDetailsComponent } from './product-details.component'
 
@@ -9,6 +13,8 @@ describe('ProductDetailsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProductDetailsComponent],
+      imports : [BrowserDynamicTestingModule],
+      providers : [CartService]
     }).compileComponents()
   })
 

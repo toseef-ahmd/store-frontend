@@ -28,8 +28,8 @@ export class CartService {
   orderItems: CartItem[] = []
 
   constructor(private http: HttpClient, private authService : AuthService) {
-   this.userID = this.authService.getAuthenticatedUserID();
-  this.token  = localStorage.getItem("token") as string;
+    this.userID = this.authService.getAuthenticatedUserID();
+    this.token  = localStorage.getItem("token") as string;
 
    console.log(this.userID)
   }

@@ -2,7 +2,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { User } from 'src/app/models/user.model'
-import { Observable } from 'rxjs'
+import { BehaviorSubject, Observable, of } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { Token } from 'src/app/models/token.model'
 import { JwtHelperService } from '@auth0/angular-jwt'
@@ -13,6 +13,8 @@ import { JwtHelperService } from '@auth0/angular-jwt'
 export class AuthService {
   m_baseURL: string = environment.BASE_URL as string
   token: string = ''
+  isLoggedIn = new BehaviorSubject<boolean>(false);
+
   constructor(private http: HttpClient) {
     this.token = localStorage.getItem('token') as string
   }
@@ -58,7 +60,18 @@ export class AuthService {
   getAuthenticatedUserID(): number {
     const helper: JwtHelperService = new JwtHelperService()
     const decodedToken = helper.decodeToken(this.token)
-    console.log(decodedToken)
-    return decodedToken.id
+    if(decodedToken)
+      {
+        return decodedToken.id
+      }
+      return 0;
+  }
+
+  ChangeLoggedInStatus(flag : boolean) {
+    this.isLoggedIn.next(flag);
+  }
+  
+  GetloggedInStatus() : BehaviorSubject<boolean> {
+    return this.isLoggedIn;
   }
 }
