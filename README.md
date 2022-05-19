@@ -24,8 +24,12 @@ PORT : 3000
 ```
 ## Running the Application
 
-Run `ng serve  --port 3000` to run dev server. Navigate to `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
-Make sure you run the backend for this application before running the app.You can find the backend here: [Store backend]([https://github.com/angular/angular-cli](https://github.com/toseefAhmed-pk/storefront-backend-api.git))
+Run `ng serve  --port 3000` to run dev server. Navigate to `http://localhost:3000/`. 
+
+The application will automatically reload if you change any of the source files.
+Make sure you run the backend for this application before running the app.You can find the backend here: 
+[Store Front backend](https://github.com/toseefAhmed-pk/storefront-backend-api.git)
+
 When you run the application, there will be no products displayed. Click on `+ Dump Products` in Application header. This will create some products in the database. After that, you should be able to see the products list.
 
 ## Build
