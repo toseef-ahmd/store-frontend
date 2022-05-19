@@ -33,7 +33,7 @@ Make sure you run the backend for this application before running the app.You ca
 This will be holding data and user credentials in a postgres database.
 
 ## Usage Guide
-When you run the application for the first time, there will be no products displayed since the database is empty. Click on **+ Dump Products** in Application header. This will create some products in the database. After that, you should be able to see the products list.
+When you run the application for the first time, there will be no products displayed since the database is empty. Click on **+ Dump Products** link in Application Navbar. This will create some products in the database. After that, you should be able to see the products list.
 
 Markup : 
          
