@@ -2,13 +2,21 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
 
+### Installing Dependencies
+
+Simply, run the following command to install the project dependencies after you have cloned the repository:
+```
+npm install
+```
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```
+hostname: http://localhost
+PORT : 3000
+```
 
-## Code scaffolding
+Run `ng serve  --port 3000` to run dev server. Navigate to `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
