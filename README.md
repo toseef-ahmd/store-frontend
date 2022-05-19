@@ -34,13 +34,12 @@ This will be holding data and user credentials in a postgres database.
 ## Usage Guide
 When you run the application for the first time, there will be no products displayed since the database is empty. Click on **+ Dump Products** in Application header. This will create some products in the database. After that, you should be able to see the products list.
 
-```
-Select a product to see product details.
-Select Quantity and Add to Cart.
-Go to Cart and insert shipping details. (If you click on `Save for next time`, your address will be saved and populated in the form automatically when you visit your cart next time)
-Click on Checkout. If you are not signed in, it will take you to login page and you should sign in in order to perform check out. After login, you will be redirected to check out page.
-After your order is placed, you can check it in My orders. (Click on User Avatar and visit `My Orders`
-```
+Markup : 1. Select a product to see product details.
+         2. Select Quantity and Add to Cart.
+         3. Go to Cart and insert shipping details. (If you click on `Save for next time`, your address will be saved and populated in the form automatically when you visit your cart next time)
+         4. Click on Checkout. If you are not signed in, it will take you to login page and you should sign in in order to perform check out. After login, you will be redirected to check out page.
+         5. After your order is placed, you can check it in My orders. (Click on User Avatar and visit `My Orders`
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
