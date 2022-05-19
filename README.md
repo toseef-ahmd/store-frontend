@@ -44,7 +44,7 @@ Following are some of the steps to use application.
             in the form automatically when you visit your cart next time)
          
          4. Click on Checkout. If you are not signed in, it will take you to login page and you should sign in in order
-            to perform check out. After login, you will be redirected to check out page.
+            to perform check out. After login, you will be redirected to checkout page.
          
          5. After your order is placed, you can check it in My orders. (Click on User Avatar and visit `My Orders`)
 
