@@ -27,18 +27,18 @@ export class CartService {
   userID: number = 0
   orderItems: CartItem[] = []
 
-  constructor(private http: HttpClient, private authService : AuthService) {
-    this.userID = this.authService.getAuthenticatedUserID();
-    this.token  = localStorage.getItem("token") as string;
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.userID = this.authService.getAuthenticatedUserID()
+    this.token = localStorage.getItem('token') as string
 
-   console.log(this.userID)
+    console.log(this.userID)
   }
 
   add(product: Product, quantity: number) {
     const localItems: CartItem[] = JSON.parse(
       localStorage.getItem('cartItems') as string
     )
-   
+
     if (localItems) {
       this.cartItems = localItems
     }
@@ -104,7 +104,7 @@ export class CartService {
 
   emptyCart(): void {
     localStorage.removeItem('cartItems')
-  
+
     this.cartItems = []
     this.addedItems.next(this.cartItems)
   }
@@ -175,7 +175,7 @@ export class CartService {
 
     console.log(this.order)
     const body: Object = { order: this.order }
-    
+
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.token}`,
@@ -188,10 +188,10 @@ export class CartService {
   }
 
   addItemsToOrder(orderID: number, cartItem: CartItem): Observable<OrderItems> {
-    const body: Object = { 
+    const body: Object = {
       order_id: orderID,
       product_id: cartItem.product.id as number,
-      quantity: cartItem.quantity 
+      quantity: cartItem.quantity,
     }
 
     const headers = new HttpHeaders({

@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'checkout-success', component: CheckoutSuccessComponent },
   { path: 'register', component: SignupComponent },
   { path: 'login', component: AuthComponent },
-  {path : 'orders', component : OrdersListComponent}
+  { path: 'orders', component: OrdersListComponent },
 ]
 
 @NgModule({

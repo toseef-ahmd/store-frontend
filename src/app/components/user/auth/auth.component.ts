@@ -31,9 +31,8 @@ export class AuthComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    
-    this.authService.GetloggedInStatus().subscribe(res=> {
-      if(res== true) {
+    this.authService.GetloggedInStatus().subscribe((res) => {
+      if (res == true) {
         this.router.navigate([''])
       }
     })
@@ -42,12 +41,11 @@ export class AuthComponent implements OnInit {
   login(username: string, password: string): void {
     this.authService.login(username, password).subscribe({
       next: (res) => {
-        if(res) {
+        if (res) {
           this.handleSuccess(res as Token)
         }
       },
       error: (e) => {
-        
         this.loginError = true
         this.errorMsg = e.error
       },
@@ -69,11 +67,11 @@ export class AuthComponent implements OnInit {
   }
 
   handleSuccess(res: Token): void {
-   // console.log(res)
+    // console.log(res)
     this.token = res as Token
     this.loginError = false
     localStorage.setItem('token', this.token.token)
-    this.authService.ChangeLoggedInStatus(true);
+    this.authService.ChangeLoggedInStatus(true)
     if (window.history.length > 1) {
       this.location.back()
     } else {

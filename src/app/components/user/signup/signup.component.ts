@@ -37,9 +37,7 @@ export class SignupComponent implements OnInit {
     private app: AppComponent
   ) {}
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   signup(): void {
     const user: User = {
@@ -54,7 +52,7 @@ export class SignupComponent implements OnInit {
       Swal.fire('', 'Successfully Signed Up', 'success')
 
       localStorage.setItem('token', JSON.stringify(this.token.token))
-      
+
       this.router.navigate(['/products'])
     })
   }

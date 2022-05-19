@@ -2,7 +2,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { User } from 'src/app/models/user.model'
-import { BehaviorSubject, Observable, of } from 'rxjs'
+import { BehaviorSubject, Observable} from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { Token } from 'src/app/models/token.model'
 import { JwtHelperService } from '@auth0/angular-jwt'
@@ -13,7 +13,7 @@ import { JwtHelperService } from '@auth0/angular-jwt'
 export class AuthService {
   m_baseURL: string = environment.BASE_URL as string
   token: string = ''
-  isLoggedIn = new BehaviorSubject<boolean>(false);
+  isLoggedIn = new BehaviorSubject<boolean>(false)
 
   constructor(private http: HttpClient) {
     this.token = localStorage.getItem('token') as string
@@ -22,10 +22,13 @@ export class AuthService {
   login(username: string, password: string): Observable<unknown> {
     const body = Object({ username: username, password: password })
 
-    const $data : Observable<unknown> = this.http.post<unknown>(this.m_baseURL + '/users/authenticate', body);
+    const $data: Observable<unknown> = this.http.post<unknown>(
+      this.m_baseURL + '/users/authenticate',
+      body
+    )
     console.log($data)
-    $data.subscribe(res => {
-      console.log("res")
+    $data.subscribe((res) => {
+      console.log('res')
       console.log(res)
     })
 
@@ -60,18 +63,17 @@ export class AuthService {
   getAuthenticatedUserID(): number {
     const helper: JwtHelperService = new JwtHelperService()
     const decodedToken = helper.decodeToken(this.token)
-    if(decodedToken)
-      {
-        return decodedToken.id
-      }
-      return 0;
+    if (decodedToken) {
+      return decodedToken.id
+    }
+    return 0
   }
 
-  ChangeLoggedInStatus(flag : boolean) {
-    this.isLoggedIn.next(flag);
+  ChangeLoggedInStatus(flag: boolean) {
+    this.isLoggedIn.next(flag)
   }
-  
-  GetloggedInStatus() : BehaviorSubject<boolean> {
-    return this.isLoggedIn;
+
+  GetloggedInStatus(): BehaviorSubject<boolean> {
+    return this.isLoggedIn
   }
 }

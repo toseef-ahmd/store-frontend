@@ -9,7 +9,7 @@ import { Location } from '@angular/common'
 })
 export class AppComponent implements AfterViewInit {
   title = 'store-frontend'
-  
+
   constructor(
     private router: Router,
     private location: Location,

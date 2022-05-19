@@ -6,7 +6,7 @@ import {
   faSignOut,
   faAdd,
   faPowerOff,
-  faShoppingBasket
+  faShoppingBasket,
 } from '@fortawesome/free-solid-svg-icons'
 
 import { AuthService } from 'src/app/services/auth/auth.service'
@@ -32,17 +32,17 @@ export class HeaderComponent implements OnInit {
   token = ''
   loggedIn = false
   user: User = { username: '', password: '', firstname: '', lastname: '' }
-  productsAvailable : boolean = true;
+  productsAvailable = true
 
   constructor(
     private cartService: CartService,
     private authService: AuthService,
     private router: Router,
     private appComp: AppComponent,
-    private productService : ProductsService
+    private productService: ProductsService
   ) {
-    this.authService.GetloggedInStatus().subscribe(res=> {
-      this.loggedIn = res;
+    this.authService.GetloggedInStatus().subscribe((res) => {
+      this.loggedIn = res
     })
   }
 
@@ -52,19 +52,18 @@ export class HeaderComponent implements OnInit {
         this.cartItemsCount = items.length
       }
     })
-    
-    this.productService.fetchProducts().subscribe(res=> {
-      if(res) {
-        this.productsAvailable = true;
-      }
-      else {
-        this.productsAvailable = false;
+
+    this.productService.fetchProducts().subscribe((res) => {
+      if (res) {
+        this.productsAvailable = true
+      } else {
+        this.productsAvailable = false
       }
     })
 
-    const token : string = localStorage.getItem('token') as string
-    console.log("token obtained")
-    if(token) {
+    const token: string = localStorage.getItem('token') as string
+    console.log('token obtained')
+    if (token) {
       this.loggedIn = true
       console.log(this.loggedIn)
     }
@@ -73,31 +72,28 @@ export class HeaderComponent implements OnInit {
   getUser(id: number): void {
     this.authService.getUser(id).subscribe((res) => {
       this.user = res
-
     })
   }
 
   async handleLogin(): Promise<void> {
-
     this.disableHeader()
   }
 
   async disableHeader(): Promise<void> {
     this.router.navigate(['/login'])
   }
-  
+
   async handleLogout(): Promise<void> {
-    
     await this.authService.logout()
-    this.authService.ChangeLoggedInStatus(false);
+    this.authService.ChangeLoggedInStatus(false)
     this.router.navigate(['/login'])
   }
 
   async dumpProducts() {
-    await this.productService.addProducts().subscribe(res=> {
-      console.log(res);
+    await this.productService.addProducts().subscribe((res) => {
+      console.log(res)
     })
 
-    window.location.reload();
+    window.location.reload()
   }
 }

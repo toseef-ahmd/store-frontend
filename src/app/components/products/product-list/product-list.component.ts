@@ -1,8 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-} from '@angular/core'
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core'
 import { Product } from 'src/app/models/products.model'
 import { ProductsService } from 'src/app/services/products/products.service'
 
@@ -13,22 +9,17 @@ import { ProductsService } from 'src/app/services/products/products.service'
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = []
-  localProducts : Product[] = []
-  
+  localProducts: Product[] = []
+
   //constructor() { }
   constructor(
     private productsService: ProductsService,
     private cd: ChangeDetectorRef
-  ) {
-    
-  }
+  ) {}
 
-
-  ngOnInit() : void {
-    this.productsService.fetchProducts().subscribe(res=> {
-      this.products = res;
-    });
-    
+  ngOnInit(): void {
+    this.productsService.fetchProducts().subscribe((res) => {
+      this.products = res
+    })
   }
-    
 }

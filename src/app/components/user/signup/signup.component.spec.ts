@@ -2,21 +2,21 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { SignupComponent } from './signup.component'
 
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 
-import { AuthService } from 'src/app/services/auth/auth.service';
-
+import { AuthService } from 'src/app/services/auth/auth.service'
+import { RouterTestingModule } from '@angular/router/testing'
+import { AppComponent } from 'src/app/app.component'
 
 describe('SignupComponent', () => {
-  
   let component: SignupComponent
   let fixture: ComponentFixture<SignupComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       declarations: [SignupComponent],
-      providers: [AuthService]
+      providers: [AuthService, AppComponent],
     }).compileComponents()
   })
 

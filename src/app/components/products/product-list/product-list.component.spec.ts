@@ -7,12 +7,12 @@ import { ProductListComponent } from './product-list.component'
 describe('ProductListComponent', () => {
   let component: ProductListComponent
   let fixture: ComponentFixture<ProductListComponent>
-
+  
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProductListComponent],
-      imports : [HttpClientTestingModule],
-      providers : [ProductsService]
+      imports: [HttpClientTestingModule],
+      providers: [ProductsService],
     }).compileComponents()
   })
 

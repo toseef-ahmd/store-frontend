@@ -23,8 +23,8 @@ import { CartComponent } from './components/cart/cart.component'
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component'
 import { CheckoutFormComponent } from './components/checkout-form/checkout-form.component'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
-import { CheckoutSuccessComponent } from './components/checkout-form/checkout-success/checkout-success.component';
-import { OrdersListComponent } from './components/orders/orders-list/orders-list.component';
+import { CheckoutSuccessComponent } from './components/checkout-form/checkout-success/checkout-success.component'
+import { OrdersListComponent } from './components/orders/orders-list/orders-list.component'
 import { OrderItemComponent } from './components/orders/order-item/order-item.component'
 
 @NgModule({

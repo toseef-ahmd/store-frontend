@@ -33,7 +33,6 @@ export class ProductDetailsComponent implements OnInit {
       this.productService
         .getProductByID(params['id'] as number)
         .subscribe((res) => {
-          
           this.product = res
         })
     })
