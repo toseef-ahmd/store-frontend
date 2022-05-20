@@ -20,6 +20,10 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.productsService.fetchProducts().subscribe((res) => {
       this.products = res
+      localStorage.setItem('products', JSON.stringify(this.products))
+      
+      console.log("this.products")
+      console.log(this.products)
     })
   }
 }

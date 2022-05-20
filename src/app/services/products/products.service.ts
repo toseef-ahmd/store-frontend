@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs'
 import { Product } from 'src/app/models/products.model'
 
 import { environment } from 'src/environments/environment'
+import * as lodash from 'lodash';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +29,7 @@ export class ProductsService {
   }
 
   fetchLocalProducts(): Observable<Product[]> {
-    const $data = this.http.get<unknown>('assets/products.json')
+    const $data = this.http.get<Product[]>('assets/products.json')
 
     $data.subscribe((res) => {
       this.products = res as Product[]
@@ -37,12 +38,19 @@ export class ProductsService {
 
     return $data as Observable<Product[]>
   }
+
   getProductByID(id: number): Observable<Product> {
-    if (this.products.length == 0) {
-      this.products = JSON.parse(localStorage.getItem('products') as string)
-    }
-    this.product.next(this.products.filter((item) => item.id == id)[0])
-    return this.product
+    return this.http.get<Product>(this.m_baseURL + `/products/${id}`);
+  //   const products = localStorage.getItem("products") as unknown as Product[];
+  //   console.log("products")
+  //   console.log(products)
+  // const product : Product = lodash.filter(products, (item)=> {item.id == id})[0] as Product
+  // console.log("lodash")
+  // console.log(product)
+   
+  //   // console.log(product)
+  //   // this.product.next(product)
+  //   return this.product
   }
 
   addProducts(): Observable<Product> {

@@ -34,6 +34,8 @@ export class ProductDetailsComponent implements OnInit {
         .getProductByID(params['id'] as number)
         .subscribe((res) => {
           this.product = res
+          console.log("this.product")
+          console.log(this.product)
         })
     })
   }
