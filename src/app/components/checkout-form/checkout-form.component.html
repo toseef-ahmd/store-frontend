@@ -19,6 +19,9 @@
             <div *ngIf="addressErr" class="text-danger">
                 Shipping address is required.
             </div>
+            <div *ngIf="!addressErr && addressMinLengthError" class="text-danger">
+                Address should be atleast 10 characters long
+            </div>
         </div>
 
         <div class="col-6">
@@ -41,6 +44,9 @@
             <input type="text" class="form-control" name="zip" placeholder="" [(ngModel)]="zip" required>
             <div *ngIf="zipErr" class="text-danger">
                 Zip code required.
+            </div>
+            <div *ngIf="!zipErr && zipMinLengthError" class="text-danger">
+                Zip code should be atleast 5 characters long.
             </div>
         </div>
     </div>

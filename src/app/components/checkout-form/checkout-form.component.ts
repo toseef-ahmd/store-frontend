@@ -10,11 +10,11 @@ import { CartService } from 'src/app/services/cart/cart.service'
   styleUrls: ['./checkout-form.component.css'],
 })
 export class CheckoutFormComponent implements OnInit {
-  addr$: Address = { email: '', address: '', state: '', zip: 0 }
+  addr$: Address = { email: '', address: '', state: '', zip: '' }
   email = ''
   address = ''
   state = ''
-  zip = 0
+  zip = ''
   saveAddress = false
 
   emailErr = false
@@ -22,6 +22,8 @@ export class CheckoutFormComponent implements OnInit {
   stateErr = false
   zipErr = false
   validEmail = true
+  zipMinLengthError = false
+  addressMinLengthError = false
 
   constructor(
     private router: Router,
@@ -64,9 +66,22 @@ export class CheckoutFormComponent implements OnInit {
     this.emailErr = this.email.length == 0 ? true : false
     this.addressErr = this.address.length == 0 ? true : false
     this.stateErr = this.state.length == 0
-    this.zipErr = this.zip === 0 ? true : false
+    this.zipErr = this.zip.length === 0 ? true : false
+    this.zipMinLengthError = this.zip.length < 5 ? true : false
+    this.addressMinLengthError = this.address.length < 10 ? true : false
 
-    return this.emailErr || this.addressErr || this.stateErr || this.zipErr
+    console.log('this.address.length')
+    console.log(this.address.length)
+    console.log('this.zip.length')
+    console.log(this.zip.length)
+    return (
+      this.emailErr ||
+      this.addressErr ||
+      this.stateErr ||
+      this.zipErr ||
+      this.zipMinLengthError ||
+      this.addressMinLengthError
+    )
   }
 
   handleSaveAddress(): void {

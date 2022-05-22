@@ -69,6 +69,9 @@ export class CartService {
   }
 
   async syncLocalCartItems(cartItems: CartItem[]): Promise<void> {
+    console.log('Cart Items')
+    console.log(cartItems)
+
     this.addedItems.next(cartItems)
     this.count.next(this.updateItemsCount())
     this.total.next(this.updateItemsTotal())
@@ -83,6 +86,7 @@ export class CartService {
       this.syncLocalCartItems(cartItems)
     }
     this.addedItems.next(cartItems)
+
     return this.addedItems
   }
 
@@ -173,8 +177,10 @@ export class CartService {
   createOrder(): Observable<Order> {
     this.order = { user_id: this.userID, status: 'processing' }
 
-    console.log(this.order)
-    const body: Object = { order: this.order }
+    const body: Object = {
+      user_id: this.order.user_id,
+      status: this.order.status,
+    }
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

@@ -5,7 +5,6 @@ import { BehaviorSubject, Observable } from 'rxjs'
 import { Product } from 'src/app/models/products.model'
 
 import { environment } from 'src/environments/environment'
-import * as lodash from 'lodash';
 
 @Injectable({
   providedIn: 'root',
@@ -40,17 +39,17 @@ export class ProductsService {
   }
 
   getProductByID(id: number): Observable<Product> {
-    return this.http.get<Product>(this.m_baseURL + `/products/${id}`);
-  //   const products = localStorage.getItem("products") as unknown as Product[];
-  //   console.log("products")
-  //   console.log(products)
-  // const product : Product = lodash.filter(products, (item)=> {item.id == id})[0] as Product
-  // console.log("lodash")
-  // console.log(product)
-   
-  //   // console.log(product)
-  //   // this.product.next(product)
-  //   return this.product
+    return this.http.get<Product>(this.m_baseURL + `/products/${id}`)
+    //   const products = localStorage.getItem("products") as unknown as Product[];
+    //   console.log("products")
+    //   console.log(products)
+    // const product : Product = lodash.filter(products, (item)=> {item.id == id})[0] as Product
+    // console.log("lodash")
+    // console.log(product)
+
+    //   // console.log(product)
+    //   // this.product.next(product)
+    //   return this.product
   }
 
   addProducts(): Observable<Product> {

@@ -2,7 +2,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { User } from 'src/app/models/user.model'
-import { BehaviorSubject, Observable} from 'rxjs'
+import { BehaviorSubject, Observable } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { Token } from 'src/app/models/token.model'
 import { JwtHelperService } from '@auth0/angular-jwt'

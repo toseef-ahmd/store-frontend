@@ -4,7 +4,10 @@ import { Product } from 'src/app/models/products.model'
 import { ProductsService } from 'src/app/services/products/products.service'
 import { ActivatedRoute } from '@angular/router'
 import { CartService } from 'src/app/services/cart/cart.service'
-import Swal from 'sweetalert2'
+import { AnimationService } from 'src/app/services/animation/animation.service'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-product-details',
@@ -21,11 +24,14 @@ export class ProductDetailsComponent implements OnInit {
     quantity: 1,
   }
   quantity: number = 1
+  faArrowLeft = faArrowLeft
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
-    private cartService: CartService
+    private cartService: CartService,
+    private animation: AnimationService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +40,7 @@ export class ProductDetailsComponent implements OnInit {
         .getProductByID(params['id'] as number)
         .subscribe((res) => {
           this.product = res
-          console.log("this.product")
+          console.log('this.product')
           console.log(this.product)
         })
     })
@@ -42,10 +48,14 @@ export class ProductDetailsComponent implements OnInit {
 
   addToCart(): void {
     this.cartService.add(this.product, this.quantity)
-    Swal.fire('', 'Product added in Cart', 'success')
+    this.animation.loadAnimation('success', 'Item(s) added to cart.')
   }
 
   setQuantity(e: Event): void {
     this.quantity = parseInt((e.target as HTMLSelectElement).value)
+  }
+
+  ContinueShopping(): void {
+    this.location.back()
   }
 }
