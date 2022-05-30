@@ -7,7 +7,7 @@ jobs:
     docker:
       - image: cimg/node:14.16.0
         environment:
-          CHROME_BIN: /usr/bin/google-chrome
+          ENV CHROME_BIN: /usr/bin/google-chrome
     steps:
       - checkout
       - run:
