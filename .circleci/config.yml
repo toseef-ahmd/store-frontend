@@ -1,4 +1,5 @@
 version: 2.1
+
 orbs: 
   node: circleci/node@5.0.2
 jobs:
@@ -13,7 +14,7 @@ jobs:
             sudo apt-get update
             sudo apt install python3-pip
             sudo pip3 install awsebcli --upgrade
-      - run: npm install -g @angular/cli@13.3.1 npm@latest
+      - run: npm install
       - run: npm run build
   test:
     machine:
