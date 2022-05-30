@@ -6,6 +6,8 @@ jobs:
   build:
     docker:
       - image: cimg/node:14.16.0
+      environment:
+          - CHROME_BIN=/usr/bin/google-chrome
     steps:
       - checkout
       - run:
@@ -16,6 +18,10 @@ jobs:
             sudo pip3 install awsebcli --upgrade
       - run: npm install
       - run: npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
   test:
     docker:
       - image: cimg/node:14.16.0
