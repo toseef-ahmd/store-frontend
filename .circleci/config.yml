@@ -24,7 +24,7 @@ jobs:
       - attach_workspace:
           at: .
       - checkout
-      - run:  ng test
+      - run: ng test
       - persist_to_workspace:
           root: .
           paths:
@@ -37,8 +37,6 @@ jobs:
           at: .
       - checkout
       - run: ng deploy
-    
-
 workflows:
   build_test_deploy:
     jobs:
