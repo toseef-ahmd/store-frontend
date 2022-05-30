@@ -1,0 +1,24 @@
+version: 3.4.1
+orbs:
+  node: circleci/node@5.0.2
+  aws-cli: circleci/aws-cli@3.1.1
+jobs:
+  build:
+    docker:
+      - image: "cimg/base:stable"
+    steps:
+      - node/install
+      - checkout
+      - aws-cli/setup
+      - run:
+          name: Angular App Install Dependencies
+          command: |
+            npm install
+      - run:
+          name: Angular App Build
+          command: |
+            ng build
+      - run:
+          name: Deploy App
+          command: |
+            ng deploy
