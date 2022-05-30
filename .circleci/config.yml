@@ -9,7 +9,6 @@ jobs:
     steps:
       - node/install
       - checkout
-      - aws-cli/setup
       - run:
           name: Installing AWS CLI
           command: |
