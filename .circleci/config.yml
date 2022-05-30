@@ -1,4 +1,4 @@
-version: 2.1
+version: 3.4.1
 
 jobs:
   build:
@@ -12,29 +12,24 @@ jobs:
             sudo apt-get update
             sudo apt install python3-pip
             sudo pip3 install awsebcli --upgrade
-      - run: cd ./app && npm install && ng build
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
+      - run:
+          name: Angular App Install Dependencies
+          command: |
+            npm install
+      - run:
+          name: Angular App Build
+          command: |
+            ng build
   test:
     machine:
       image: ubuntu-2004:202010-01
     steps:
-      - attach_workspace:
-          at: .
       - checkout
-      - run: cd ./app && ng test
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
+      - run: ng test
   deploy:
     machine:
         image: ubuntu-2004:202010-01
     steps:
-      - attach_workspace:
-          at: .
       - checkout
       - run: ng deploy
     
