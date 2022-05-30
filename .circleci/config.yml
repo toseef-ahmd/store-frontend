@@ -23,6 +23,7 @@ jobs:
       - attach_workspace:
           at: .
       - checkout
+      - run: npm install
       - run: npm run test
   deploy:
     docker:
@@ -31,6 +32,7 @@ jobs:
       - attach_workspace:
           at: .
       - checkout
+      - run: npm install
       - run: npm run deploy
 workflows:
   build_test_deploy:
