@@ -1,24 +1,51 @@
-version: 3.4.1
-orbs:
-  node: circleci/node@5.0.2
-  aws-cli: circleci/aws-cli@3.1.1
+version: 2.1
+
 jobs:
   build:
-    docker:
-      - image: "cimg/base:stable"
+    machine:
+      image: ubuntu-2004:202010-01
     steps:
-      - node/install
       - checkout
-      - aws-cli/setup
       - run:
-          name: Angular App Install Dependencies
+          name: Installing AWS CLI
           command: |
-            npm install
-      - run:
-          name: Angular App Build
-          command: |
-            ng build
-      - run:
-          name: Deploy App
-          command: |
-            ng deploy
+            sudo apt-get update
+            sudo apt install python3-pip
+            sudo pip3 install awsebcli --upgrade
+      - run: cd ./app && npm install && ng build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+  test:
+    machine:
+      image: ubuntu-2004:202010-01
+    steps:
+      - attach_workspace:
+          at: .
+      - checkout
+      - run: cd ./app && ng test
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+  deploy:
+    machine:
+        image: ubuntu-2004:202010-01
+    steps:
+      - attach_workspace:
+          at: .
+      - checkout
+      - run: ng deploy
+    
+
+workflows:
+  build_test_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - test
