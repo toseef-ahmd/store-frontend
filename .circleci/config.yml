@@ -5,8 +5,10 @@ orbs:
 jobs:
   build:
     docker:
-      - image: cimg/node:14.16.0
+      - image: cimg/node:16.13.1-browsers
     steps:
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - run:
           name: Installing AWS CLI
           command: |
@@ -19,7 +21,7 @@ jobs:
       - run: npm run build
   test:
     docker:
-      - image: cimg/node:14.16.0
+      - image: cimg/node:16.13.1-browsers
     steps:
       - attach_workspace:
           at: .
@@ -28,7 +30,7 @@ jobs:
       - run: npm run test
   deploy:
     docker:
-      - image: cimg/node:14.16.0
+      - image: cimg/node:16.13.1-browsers
     steps:
       - attach_workspace:
           at: .
