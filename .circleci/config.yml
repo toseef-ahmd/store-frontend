@@ -7,14 +7,15 @@ jobs:
     docker:
       - image: cimg/node:14.16.0
     steps:
-      - node/install
-      - checkout
       - run:
           name: Installing AWS CLI
           command: |
             sudo apt-get update
             sudo apt install python3-pip
             sudo pip3 install awsebcli --upgrade
+            
+      - checkout
+      - run: npm install
       - run: npm run build
       - persist_to_workspace:
           root: .
