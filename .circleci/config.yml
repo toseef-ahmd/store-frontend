@@ -4,17 +4,6 @@ orbs:
   node: circleci/node@5.0.2
   browser-tools: circleci/browser-tools@1.2.3
 jobs:
-  test:
-    docker:
-      - image: cimg/node:16.13.1-browsers
-        environment:
-          CHROME_BIN: /usr/bin/google-chrome
-    steps:
-      - attach_workspace:
-          at: .
-      - checkout
-      - run: npm install
-      - run: npm run test --no-watch --no-progress --browsers=ChromeHeadless
   build:
     docker:
       - image: cimg/node:16.13.1-browsers
@@ -43,7 +32,7 @@ jobs:
 workflows:
   build_test_deploy:
     jobs:
-      - test
+      - build
       - deploy:
           requires:
-            - test
+            - build
