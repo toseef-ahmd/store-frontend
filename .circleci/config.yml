@@ -17,7 +17,3 @@ jobs:
           name: Front-End Test
           command: |
             npm run test
-      - run:
-          name: Front-End Build
-          command: |
-            npm run build
