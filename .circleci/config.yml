@@ -22,8 +22,6 @@ jobs:
     docker:
       - image: cibuilds/aws:1.16.1
     steps:
-      - attach_workspace:
-          at: .
       - checkout
       - run: npm install
       - run: npm run deploy
