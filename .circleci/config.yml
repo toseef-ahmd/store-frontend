@@ -36,7 +36,7 @@ jobs:
       - attach_workspace:
           at: .
       - checkout
-      - run: aws s3 sync ./app/dist/store_frontend s3://store_frontent
+      - run: aws s3 sync ./dist/store_frontend s3://store_frontent
     
 
 workflows:
