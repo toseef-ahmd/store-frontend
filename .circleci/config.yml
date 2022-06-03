@@ -8,7 +8,7 @@ jobs:
     docker:
       - image: cimg/node:16.13.1-browsers
         environment:
-          - CHROME_BIN=/usr/bin/google-chrome karma start --single-run
+          CHROME_BIN: /usr/bin/google-chrome
     steps:
       - attach_workspace:
           at: .
