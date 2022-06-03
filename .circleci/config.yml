@@ -1,52 +1,16 @@
-version: 2.1
-
-orbs: 
-  node: circleci/node@5.0.2
-  browser-tools: circleci/browser-tools@1.2.3
 jobs:
   build:
     docker:
-      - image: cimg/node:16.13.1-browsers
+      - image: circleci/node:7.10.1-browsers
     steps:
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
-      - run:
-          name: Installing AWS CLI
-          command: |
-            sudo apt-get update
-            sudo apt install python3-pip
-            sudo pip3 install awsebcli --upgrade
-
       - checkout
-      - run: npm install
-      - run: npm run build
-  test:
-    docker:
-      - image: cimg/node:16.13.1-browsers
-        environment:
-          - CHROME_BIN=/usr/bin/google-chrome karma start --single-run
-    steps:
-      - attach_workspace:
-          at: .
-      - checkout
-      - run: npm install
-      - run: npm run test --no-watch --no-progress --browsers=ChromeHeadlessCI
-  deploy:
-    docker:
-      - image: cimg/node:16.13.1-browsers
-    steps:
-      - attach_workspace:
-          at: .
-      - checkout
-      - run: npm install
-      - run: npm run deploy
-workflows:
-  build_test_deploy:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
-      - deploy:
-          requires:
-            - test
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run: npm run install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: np run test
