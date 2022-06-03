@@ -1,34 +1,20 @@
 version: 2.1
-
-orbs: 
+orbs:
   node: circleci/node@5.0.2
   aws-cli: circleci/aws-cli@1.3.1
 jobs:
   build:
     docker:
-      - image: cimg/node:16.13.1-browsers
+      - image: "cimg/base:stable"
     steps:
+      - node/install
+      - checkout
       - run:
-          name: Installing AWS CLI
+          name: Front-End Install
           command: |
-            sudo apt-get update
-            sudo apt install python3-pip
-            sudo pip3 install awsebcli --upgrade
-
-      - checkout
-      - run: npm install
-      - run: npm run build
-  deploy:
-    docker:
-      - image: cibuilds/aws:1.16.1
-    steps:
-      - checkout
-      - run: npm install
-      - run: npm run deploy
-workflows:
-  build_test_deploy:
-    jobs:
-      - build
-      - deploy:
-          requires:
-            - build
+            npm install
+      - run:
+          name: Front-End Build
+          command: |
+            npm run build
+      
